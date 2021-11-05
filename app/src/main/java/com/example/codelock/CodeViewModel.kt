@@ -1,72 +1,53 @@
 package com.example.codelock
 
-import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlin.random.Random
 
 class CodeViewModel : ViewModel() {
 
-    private val codeList: MutableList<Int> = mutableListOf()
+    private val codeList = mutableListOf<Int>()
 
-    private var currentGeneratedCode: Int? = null
-    private var currentCodeTyped: String? = null
+    private var currentGeneratedCode = MutableLiveData("")
+    private var currentCodeTyped = MutableLiveData("")
+    var finalCode: LiveData<String> = currentGeneratedCode
 
-    private fun generateCode() {
+    fun generateCode() {
+        currentCodeTyped.value = ""
         val tempCode = Random.nextInt(0, 10000)
         if (codeList.contains(tempCode)) {
             generateCode()
         } else {
             codeList.add(tempCode)
-            currentGeneratedCode = tempCode
-            Log.d("GeneratedValue", currentGeneratedCode.toString())
+            currentGeneratedCode.value = formatGeneratedCode(tempCode)
+            finalCode = currentGeneratedCode
         }
     }
 
-    private fun formatGeneratedCode(): String {
-        if (currentGeneratedCode!! < 10) {
-            return "000" + currentGeneratedCode!!.toString()
-        } else if (currentGeneratedCode!! >= 10 && currentGeneratedCode!! < 100) {
-            return "00" + currentGeneratedCode!!.toString()
-        } else if (currentGeneratedCode!! >= 100 && currentGeneratedCode!! < 1000) {
-            return "0" + currentGeneratedCode!!.toString()
+    private fun formatGeneratedCode(code: Int): String {
+        if (code < 10) {
+            return "000" + code.toString()
+        } else if (code >= 10 && code < 100) {
+            return "00" + code.toString()
+        } else if (code >= 100 && code < 1000) {
+            return "0" + code.toString()
         } else {
-            return currentGeneratedCode!!.toString()
+            return code.toString()
         }
     }
 
-    fun getGenerateCode(): String {
-        currentCodeTyped = null
-        generateCode()
-        return formatGeneratedCode()
-    }
-
-    fun numberClicked(number: Int): String {
-        currentGeneratedCode = null
-        if (currentCodeTyped == null) {
-            currentCodeTyped = number.toString()
-            return currentCodeTyped!!
+    fun numberClicked(number: Int) {
+        currentGeneratedCode.value = ""
+        if (currentCodeTyped.value!!.length >= 4) {
         } else {
-            if (currentCodeTyped!!.length == 4) {
-                return currentCodeTyped!!
-            } else {
-                currentCodeTyped += number.toString()
-                return currentCodeTyped!!
-            }
+            currentCodeTyped.value += number.toString()
         }
-    }
-
-    fun getCurrentCode(): String {
-        if (currentGeneratedCode == null && currentCodeTyped == null) {
-            return ""
-        } else if (currentGeneratedCode == null) {
-            return currentCodeTyped!!
-        } else {
-            return formatGeneratedCode()
-        }
+        finalCode = currentCodeTyped
     }
 
     fun clean() {
-        currentCodeTyped = null
-        currentGeneratedCode = null
+        currentCodeTyped.value = ""
+        currentGeneratedCode.value = ""
     }
 }

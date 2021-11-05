@@ -26,24 +26,26 @@ class CodeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding!!.resultado.text = codeViewModel.getCurrentCode()
-
-        binding!!.generateButton.setOnClickListener {
-            binding!!.resultado.text = codeViewModel.getGenerateCode()
+        binding?.apply {
+            viewModel = codeViewModel
+            lifecycleOwner = viewLifecycleOwner
         }
 
-        binding!!.zero.setOnClickListener { binding!!.resultado.text = codeViewModel.numberClicked(0) }
-        binding!!.um.setOnClickListener { binding!!.resultado.text = codeViewModel.numberClicked(1) }
-        binding!!.dois.setOnClickListener { binding!!.resultado.text = codeViewModel.numberClicked(2) }
-        binding!!.tres.setOnClickListener { binding!!.resultado.text = codeViewModel.numberClicked(3) }
-        binding!!.quatro.setOnClickListener { binding!!.resultado.text = codeViewModel.numberClicked(4) }
-        binding!!.cinco.setOnClickListener { binding!!.resultado.text = codeViewModel.numberClicked(5) }
-        binding!!.seis.setOnClickListener { binding!!.resultado.text = codeViewModel.numberClicked(6) }
-        binding!!.sete.setOnClickListener { binding!!.resultado.text = codeViewModel.numberClicked(7) }
-        binding!!.oito.setOnClickListener { binding!!.resultado.text = codeViewModel.numberClicked(8) }
-        binding!!.nove.setOnClickListener { binding!!.resultado.text = codeViewModel.numberClicked(9) }
+        binding!!.generateButton.setOnClickListener {
+            codeViewModel.generateCode()
+        }
+
+        binding!!.zero.setOnClickListener { codeViewModel.numberClicked(0) }
+        binding!!.um.setOnClickListener { codeViewModel.numberClicked(1) }
+        binding!!.dois.setOnClickListener { codeViewModel.numberClicked(2) }
+        binding!!.tres.setOnClickListener { codeViewModel.numberClicked(3) }
+        binding!!.quatro.setOnClickListener { codeViewModel.numberClicked(4) }
+        binding!!.cinco.setOnClickListener { codeViewModel.numberClicked(5) }
+        binding!!.seis.setOnClickListener { codeViewModel.numberClicked(6) }
+        binding!!.sete.setOnClickListener { codeViewModel.numberClicked(7) }
+        binding!!.oito.setOnClickListener { codeViewModel.numberClicked(8) }
+        binding!!.nove.setOnClickListener { codeViewModel.numberClicked(9) }
         binding!!.c.setOnClickListener {
-            binding!!.resultado.text = ""
             codeViewModel.clean()
         }
     }

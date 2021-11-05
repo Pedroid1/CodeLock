@@ -1,201 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background_layout">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.codelock.CodeViewModel" />
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/background_layout">
 
-        <TextView
-            android:id="@+id/resultado"
-            android:layout_width="0dp"
-            android:layout_height="70dp"
-            android:layout_margin="@dimen/margin_layout"
-            android:background="@color/background_resultado"
-            android:gravity="center"
-            android:letterSpacing="0.8"
-            android:textAlignment="center"
-            android:textColor="@color/font_color_resultado"
-            android:textSize="45dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-
-        <TextView
-            android:id="@+id/sete"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="@dimen/margin_between_view"
-            android:background="@color/background_numeros"
-            android:gravity="center"
-            android:text="7"
-            android:textAlignment="center"
-            android:textColor="@color/font_color_numeros"
-            android:textSize="60dp"
-            app:layout_constraintStart_toStartOf="@id/resultado"
-            app:layout_constraintTop_toBottomOf="@id/resultado" />
-
-        <TextView
-            android:id="@+id/oito"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@color/background_numeros"
-            android:gravity="center"
-            android:text="8"
-            android:textAlignment="center"
-            android:textColor="@color/font_color_numeros"
-            android:textSize="60dp"
-            app:layout_constraintEnd_toStartOf="@id/nove"
-            app:layout_constraintStart_toEndOf="@id/sete"
-            app:layout_constraintTop_toTopOf="@id/sete" />
+            <TextView
+                android:id="@+id/resultado"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_margin="@dimen/margin_layout"
+                android:background="@color/background_resultado"
+                android:gravity="center"
+                android:text="@{viewModel.finalCode}"
+                android:letterSpacing="0.8"
+                android:textAlignment="center"
+                android:textColor="@color/font_color_resultado"
+                android:textSize="45dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
-        <TextView
-            android:id="@+id/nove"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@color/background_numeros"
-            android:gravity="center"
-            android:text="9"
-            android:textAlignment="center"
-            android:textColor="@color/font_color_numeros"
-            android:textSize="60dp"
-            app:layout_constraintEnd_toEndOf="@id/resultado"
-            app:layout_constraintTop_toTopOf="@id/oito"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="-146dp" />
+            <TextView
+                android:id="@+id/sete"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="@dimen/margin_between_view"
+                android:background="@color/background_numeros"
+                android:gravity="center"
+                android:text="7"
+                android:textAlignment="center"
+                android:textColor="@color/font_color_numeros"
+                android:textSize="60dp"
+                app:layout_constraintStart_toStartOf="@id/resultado"
+                app:layout_constraintTop_toBottomOf="@id/resultado" />
 
-        <TextView
-            android:id="@+id/quatro"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="@dimen/margin_between_view"
-            android:background="@color/background_numeros"
-            android:gravity="center"
-            android:text="4"
-            android:textAlignment="center"
-            android:textColor="@color/font_color_numeros"
-            android:textSize="60dp"
-            app:layout_constraintStart_toStartOf="@id/sete"
-            app:layout_constraintTop_toBottomOf="@id/sete" />
-
-
-        <TextView
-            android:id="@+id/cinco"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@color/background_numeros"
-            android:gravity="center"
-            android:text="5"
-            android:textAlignment="center"
-            android:textColor="@color/font_color_numeros"
-            android:textSize="60dp"
-            app:layout_constraintEnd_toStartOf="@id/seis"
-            app:layout_constraintStart_toEndOf="@id/quatro"
-            app:layout_constraintTop_toTopOf="@id/quatro" />
+            <TextView
+                android:id="@+id/oito"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@color/background_numeros"
+                android:gravity="center"
+                android:text="8"
+                android:textAlignment="center"
+                android:textColor="@color/font_color_numeros"
+                android:textSize="60dp"
+                app:layout_constraintEnd_toStartOf="@id/nove"
+                app:layout_constraintStart_toEndOf="@id/sete"
+                app:layout_constraintTop_toTopOf="@id/sete" />
 
 
-        <TextView
-            android:id="@+id/seis"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@color/background_numeros"
-            android:gravity="center"
-            android:text="6"
-            android:textAlignment="center"
-            android:textColor="@color/font_color_numeros"
-            android:textSize="60dp"
-            app:layout_constraintEnd_toEndOf="@id/nove"
-            app:layout_constraintTop_toTopOf="@id/cinco"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="-146dp" />
+            <TextView
+                android:id="@+id/nove"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@color/background_numeros"
+                android:gravity="center"
+                android:text="9"
+                android:textAlignment="center"
+                android:textColor="@color/font_color_numeros"
+                android:textSize="60dp"
+                app:layout_constraintEnd_toEndOf="@id/resultado"
+                app:layout_constraintTop_toTopOf="@id/oito"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="-146dp" />
 
-        <TextView
-            android:id="@+id/um"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="@dimen/margin_between_view"
-            android:background="@color/background_numeros"
-            android:gravity="center"
-            android:text="1"
-            android:textAlignment="center"
-            android:textColor="@color/font_color_numeros"
-            android:textSize="60dp"
-            app:layout_constraintStart_toStartOf="@id/quatro"
-            app:layout_constraintTop_toBottomOf="@id/quatro" />
-
-
-        <TextView
-            android:id="@+id/dois"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@color/background_numeros"
-            android:gravity="center"
-            android:text="2"
-            android:textAlignment="center"
-            android:textColor="@color/font_color_numeros"
-            android:textSize="60dp"
-            app:layout_constraintEnd_toStartOf="@id/tres"
-            app:layout_constraintStart_toEndOf="@id/um"
-            app:layout_constraintTop_toTopOf="@id/um" />
+            <TextView
+                android:id="@+id/quatro"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="@dimen/margin_between_view"
+                android:background="@color/background_numeros"
+                android:gravity="center"
+                android:text="4"
+                android:textAlignment="center"
+                android:textColor="@color/font_color_numeros"
+                android:textSize="60dp"
+                app:layout_constraintStart_toStartOf="@id/sete"
+                app:layout_constraintTop_toBottomOf="@id/sete" />
 
 
-        <TextView
-            android:id="@+id/tres"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@color/background_numeros"
-            android:gravity="center"
-            android:text="3"
-            android:textAlignment="center"
-            android:textColor="@color/font_color_numeros"
-            android:textSize="60dp"
-            app:layout_constraintEnd_toEndOf="@id/seis"
-            app:layout_constraintTop_toTopOf="@id/dois" />
+            <TextView
+                android:id="@+id/cinco"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@color/background_numeros"
+                android:gravity="center"
+                android:text="5"
+                android:textAlignment="center"
+                android:textColor="@color/font_color_numeros"
+                android:textSize="60dp"
+                app:layout_constraintEnd_toStartOf="@id/seis"
+                app:layout_constraintStart_toEndOf="@id/quatro"
+                app:layout_constraintTop_toTopOf="@id/quatro" />
 
-        <TextView
-            android:id="@+id/zero"
-            android:layout_width="0dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="@dimen/margin_between_view"
-            android:background="@color/background_numeros"
-            android:gravity="center"
-            android:text="0"
-            android:textAlignment="center"
-            android:textColor="@color/font_color_numeros"
-            android:textSize="60dp"
-            app:layout_constraintEnd_toEndOf="@id/dois"
-            app:layout_constraintStart_toStartOf="@id/um"
-            app:layout_constraintTop_toBottomOf="@id/um" />
 
-        <TextView
-            android:id="@+id/c"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@color/background_numeros"
-            android:gravity="center"
-            android:text="C"
-            android:textAlignment="center"
-            android:textColor="@color/font_color_numeros"
-            android:textSize="60dp"
-            app:layout_constraintEnd_toEndOf="@id/tres"
-            app:layout_constraintTop_toTopOf="@id/zero" />
+            <TextView
+                android:id="@+id/seis"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@color/background_numeros"
+                android:gravity="center"
+                android:text="6"
+                android:textAlignment="center"
+                android:textColor="@color/font_color_numeros"
+                android:textSize="60dp"
+                app:layout_constraintEnd_toEndOf="@id/nove"
+                app:layout_constraintTop_toTopOf="@id/cinco"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="-146dp" />
 
-        <Button
-            android:id="@+id/generate_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_between_view"
-            android:backgroundTint="@color/red_rust"
-            android:text="@string/generate_code"
-            app:layout_constraintEnd_toEndOf="@id/c"
-            app:layout_constraintStart_toStartOf="@id/zero"
-            app:layout_constraintTop_toBottomOf="@id/zero" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+            <TextView
+                android:id="@+id/um"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="@dimen/margin_between_view"
+                android:background="@color/background_numeros"
+                android:gravity="center"
+                android:text="1"
+                android:textAlignment="center"
+                android:textColor="@color/font_color_numeros"
+                android:textSize="60dp"
+                app:layout_constraintStart_toStartOf="@id/quatro"
+                app:layout_constraintTop_toBottomOf="@id/quatro" />
+
+
+            <TextView
+                android:id="@+id/dois"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@color/background_numeros"
+                android:gravity="center"
+                android:text="2"
+                android:textAlignment="center"
+                android:textColor="@color/font_color_numeros"
+                android:textSize="60dp"
+                app:layout_constraintEnd_toStartOf="@id/tres"
+                app:layout_constraintStart_toEndOf="@id/um"
+                app:layout_constraintTop_toTopOf="@id/um" />
+
+
+            <TextView
+                android:id="@+id/tres"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@color/background_numeros"
+                android:gravity="center"
+                android:text="3"
+                android:textAlignment="center"
+                android:textColor="@color/font_color_numeros"
+                android:textSize="60dp"
+                app:layout_constraintEnd_toEndOf="@id/seis"
+                app:layout_constraintTop_toTopOf="@id/dois" />
+
+            <TextView
+                android:id="@+id/zero"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="@dimen/margin_between_view"
+                android:background="@color/background_numeros"
+                android:gravity="center"
+                android:text="0"
+                android:textAlignment="center"
+                android:textColor="@color/font_color_numeros"
+                android:textSize="60dp"
+                app:layout_constraintEnd_toEndOf="@id/dois"
+                app:layout_constraintStart_toStartOf="@id/um"
+                app:layout_constraintTop_toBottomOf="@id/um" />
+
+            <TextView
+                android:id="@+id/c"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@color/background_numeros"
+                android:gravity="center"
+                android:text="C"
+                android:textAlignment="center"
+                android:textColor="@color/font_color_numeros"
+                android:textSize="60dp"
+                app:layout_constraintEnd_toEndOf="@id/tres"
+                app:layout_constraintTop_toTopOf="@id/zero" />
+
+            <Button
+                android:id="@+id/generate_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_between_view"
+                android:backgroundTint="@color/red_rust"
+                android:text="@string/generate_code"
+                app:layout_constraintEnd_toEndOf="@id/c"
+                app:layout_constraintStart_toStartOf="@id/zero"
+                app:layout_constraintTop_toBottomOf="@id/zero" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
